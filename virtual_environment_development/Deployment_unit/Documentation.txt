@@ -63,7 +63,12 @@ Making virtual environment
     git branch -M main
     git push -u origin main
     /home/madhavr/Swasya_yantra/Math_stat_Engine/virtual_environment_development/Project_files
-    
+
     git remote add origin https://github.com/madhavprapanna52/Ganit_chakshu.git
 git branch -M main
 git push -u origin main
+
+git rm -r --cached .
+git add .
+git commit -m "Fixed .gitignore to ignore unnecessary folders"
+git push origin main

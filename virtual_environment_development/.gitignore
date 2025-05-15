@@ -1,0 +1,34 @@
+# Ignore virtual environment folders
+bin/
+lib/
+lib64/
+include/
+pyvenv.cfg
+
+# Ignore __pycache__ and compiled files
+__pycache__/
+*.py[cod]
+*.so
+
+# Ignore Jupyter checkpoints
+.ipynb_checkpoints/
+
+# Ignore environment and OS files
+.env
+.venv
+*.env
+.DS_Store
+Thumbs.db
+
+# Ignore logs and data dumps
+*.log
+*.sqlite3
+*.db
+
+# Ignore VS Code and JetBrains config
+.vscode/
+.idea/
+
+# Ignore any other folders not in Project_files
+# Allow only specific folders
+!virtual_environment_development/Project_files/
