@@ -1,0 +1,9 @@
+Tasks documentations
+
+Features list to work on 
+    - For computations simplicity 
+        ~ Data labeleling mechanisms in initial preprocessing is required }}
+    - data handle framework required to select dataset }}
+        requires involvation of java for speed and presission , still exceptions are their 
+
+    - Making copy based - DATA FLOW AND EXECUTION OPTIMISATION IS REQUIRED MUST TO PREVENT CRASHES 

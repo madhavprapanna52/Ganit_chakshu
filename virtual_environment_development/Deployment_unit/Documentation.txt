@@ -17,9 +17,6 @@ Project structure
     |-Documentaiton.txt
     |-testing.py
     |
-    |--Notebooks
-    |   |-prototyping_development_features.pynb
-    |
     |--Data_Preprocessing_unit
     |    |-simple_dataset_handle.py
     |    |-data_sanitisation.py
@@ -37,8 +34,8 @@ Project structure
     |        |-expressions_analyst.py
     |        |-mathematical_tools.py
     |
-    |--Extraction_unit
-    |    |-stat_feature_extraction_unit.py
+    |--Extraction_unit  # based on extraction engine tools 
+    |    |-stat_feature_extraction_unit.py  
     |    |-mathematical_relation_extraction_unit.py
     |
     |--Storage_units
@@ -51,24 +48,7 @@ Project structure
          |-front_end.py
          |-dataset_feature_optimisation.py
          |-dashboard_generation_unit.py
-
+         |-Report_generation.py
 
 ___________________________________________________
-Development Notes 
-
-Making virtual environment
-    > python version based init : python3.9 -m venv <venv_name>
-    > activation command : source ~/bin/activate | terminal based (terminal based extensions)
-    git remote add origin https://github.com/madhavprapanna52/Ganit_chakshu.git
-    git branch -M main
-    git push -u origin main
-    /home/madhavr/Swasya_yantra/Math_stat_Engine/virtual_environment_development/Project_files
-
-    git remote add origin https://github.com/madhavprapanna52/Ganit_chakshu.git
-git branch -M main
-git push -u origin main
-
-git rm -r --cached .
-git add .
-git commit -m "Fixed .gitignore to ignore unnecessary folders"
-git push origin main
+Development notes 
