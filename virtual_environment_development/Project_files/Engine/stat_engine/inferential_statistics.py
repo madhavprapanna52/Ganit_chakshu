@@ -58,34 +58,32 @@ class Probability_kernel:
             input : partitioned list
             output : partitioned based dictionary list containning freq of elements in partitions based
             '''
-            freq_list = []  # For one list 
-
+            freq_list = []
             def counter_element(element, l):  # counts freq
                 counter = 0
                 for i in l: # iterating list
                     if (element == i):
                         counter += 1
                 return counter
-
-
+            # Binary dataset 
             if l[0] == 'b':
                 # index based computing for simplicity 
                 
                 for chunk in l[1:]:  # taking partitions list 
                     
                     chunk_freq_element = {} # freq dictionary
-                    chunk_freq_element['0'] = counter_element('0', chunk)
-                    chunk_freq_element['1'] = counter_element('1', chunk)
+                    chunk_freq_element['0'] = counter_element('0', chunk)/10
+                    chunk_freq_element['1'] = counter_element('1', chunk)/10
 
                     freq_list.append(chunk_freq_element) # adding chunk freq
                 return freq_list
-
+            # Categorical dataset 
             elif l[0] == 'c':
                 elements_to_search = '1,2,3,4,5'.split(',')
                 for chunk in l[1:]:
                     chunk_freq = {}
                     for elems in elements_to_search:
-                        chunk_freq[elems] = counter_element(elems, chunk)
+                        chunk_freq[elems] = counter_element(elems, chunk)/10
 
                     freq_list.append(chunk_freq)
                 return freq_list
@@ -96,25 +94,25 @@ class Probability_kernel:
         binary_data_freq = []
         categorical_freq = []
 
-        #todo Testing each element each 
-
+        # Iterations for frequency counting 
         for binary_elements in binary_dataset:
             partitioned_list  = partition_list(binary_elements)
             freq_dict_list = freq_list(partitioned_list)  # list of dictionaries 
-
             binary_data_freq.append(freq_dict_list)
-        
         for categorical_unit in categorical_dataset:
             partitioned_cat = partition_list(categorical_unit)
             freq_dict_list = freq_list(partitioned_cat)
             categorical_freq.append(freq_dict_list)
-        
+
+        # Which you want - From dataset 
         if which_to_return == 'c':
             return categorical_freq
         elif which_to_return == 'b':
             return binary_data_freq
         else:
             return categorical_freq,binary_data_freq
+
+
 
 p = Probability_kernel(data_set)
 dis = p.Discreet_prob_ini('b')

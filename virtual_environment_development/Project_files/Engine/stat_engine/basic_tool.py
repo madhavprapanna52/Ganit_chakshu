@@ -74,25 +74,18 @@ class Loging_program_report():  # working fine
         print('_'*20)
         print(label_text)
         print(text)
-        # li = []
-        # for elems in text:
-        #     if type(li) == type(elems):
-        #         for e in elems:
-        #             print('+'*30)
-        #             print(e)
-        #             print('+'*30)
         print('_'*20)
 
 l = Loging_program_report()
 
-def partition_list(list_input):  # wprking fine -- Label edge partition
+def partition_list(list_input, partition_length=10):  # wprking fine -- Label edge partition
     '''
     Making percentage based division 
     Edge cases : smaller datasets 
     '''
     #todo Variable partition needed urgent 
     # (x/total)X100 = 2% | v -> variable for partition chunks
-    v = 10
+    v = partition_length  # Making variation with this
     partition_size = int((v * len(list_input)) / 100)
     i = 0
     partition_output = []
