@@ -102,13 +102,44 @@ def partition_list(list_input, partition_length=10):  # wprking fine -- Label ed
         i += v
     return partition_output
 
-'''
+def number_partition(numbers_range=(-50,50), partitions_number=10):  # Number partition done 
+    v = partitions_number
+    bin_list = [] # containning bins of numbers to put into [(starting, ending)...]
+    starting_num = numbers_range[0]
+
+    # partition calculations 
+    partition_total = (numbers_range[1] - numbers_range[0])
+    division = (partition_total / partitions_number)  # Division number
+
+    not_done = True
+    i = -50 # bin initiator - loop terminator
+    bin_element_list = []
+    while not_done:
+        bin_element = (i,i+division)
+        i = bin_element[1]
+        bin_element_list.append(bin_element)
+        if (i == numbers_range[1]):
+            return bin_element_list
+
+def int_convert(str_l): # integer convertor | tested
+    num_l = []
+    for i in str_l[1:]:
+        num_l.append(int(i))
+    return num_l
+
+def bin_frequency(bin_num, l):
+    counter = 0
+    for i in l:
+        condition = '(bin_num[0] <= i) and (bin_num[1] >= i)'
+        c1 = eval(condition)  # bin condition
+        if c1:
+            counter += 1
+    return counter
+
+
 #Tested with the edition of label edged partition
 d = load_csv('synthetic_data.csv')
 handle = Data_handle(d)
 b_list = handle.row('b')
-for i in b_list:
-    part = partition_list(i)
-    for p in part:
-    break
-'''
+
+n_list = handle.row('n')

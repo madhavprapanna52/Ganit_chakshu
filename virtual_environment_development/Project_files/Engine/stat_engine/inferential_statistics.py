@@ -110,14 +110,31 @@ class Probability_kernel:
         elif which_to_return == 'b':
             return binary_data_freq
         else:
-            return categorical_freq,binary_data_freq
-
-
+            return [categorical_freq,binary_data_freq] # Probability initialised for discreet dataset
+    
+    def Continuous_probability_initialisation(self):
+        '''
+        Theoritical continuous probability modeling 
+        partitions based frequency divided by total partitions
+         would result in probability of the bin thus 
+         modeling continous dataset 
+        '''
+        continuous_dataset = self.data_list.row('n')  # Numerical dataset 
+        cont_probability_model = []
+        partition_bin_list = number_partition()
+        for cont_elems in continuous_dataset:
+            int_l = int_convert(cont_elems) # integers numbers
+            # Dictionary list | bins frequency output 
+            freq_dict = {}
+            for bins in partition_bin_list:
+                freq_dict[str(bins)] = bin_frequency(bins, int_l)/10  # probability initialised
+            cont_probability_model.append(freq_dict)  # containning the frequencies dict
+        return cont_probability_model
+        
 
 p = Probability_kernel(data_set)
 dis = p.Discreet_prob_ini('b')
-print(f'discreet list : {dis}')
-for i in dis:
-    print(i)
-l.present()
+c = p.Continuous_probability_initialisation()
+
+print(c)
 
