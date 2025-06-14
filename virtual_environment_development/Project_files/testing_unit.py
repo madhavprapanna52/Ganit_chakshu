@@ -58,7 +58,7 @@ def format_output(data_points):
         print(i)
     return formated_data  # tested ok
 
-data_set = format_output(Random_data_generator(10,10))
+data_set = format_output(Random_data_generator(101,10))
 
 # Data science into file
 def comunicate_file():

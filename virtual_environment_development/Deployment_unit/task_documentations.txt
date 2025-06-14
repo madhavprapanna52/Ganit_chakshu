@@ -7,3 +7,10 @@ Features list to work on
         requires involvation of java for speed and presission , still exceptions are their 
 
     - Making copy based - DATA FLOW AND EXECUTION OPTIMISATION IS REQUIRED MUST TO PREVENT CRASHES 
+
+MVP targets 
+
+    Inferences unit to make 
+        - Making basic probability modeling - discreet and continous data sets 
+        - Modeling probability modeling functions into code 
+        - fit algorithms 

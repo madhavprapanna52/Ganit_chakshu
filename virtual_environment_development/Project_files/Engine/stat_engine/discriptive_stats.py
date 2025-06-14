@@ -32,12 +32,13 @@ class Discriptive_stat():
     def __init__(self, data_set):
         self.data_set = data_set  # whole dataset into list 
 
-    def central_tendency(self, data_list):  # computation unit 
+    def central_tendency(self, data_list):  # working fine 
         '''
         Making basic computations of central tendency of dataset
         mean , median mode computations based on data type : 
             MVP : Only for numerical datasets for now 
         '''
+        # TODO Interface for the function required 
         # Making type conversion 
         int_list = []
         for i in data_list:
@@ -48,6 +49,7 @@ class Discriptive_stat():
 
         del int_list
         print(f"""
+        Central tendency Data report 
         MEAN OF DATA : {mean}
         MEDIAN OF DATA : {median}
         MODE OF DATA : {mode}
@@ -61,11 +63,11 @@ class Discriptive_stat():
         """
         # fetch collums of numericals
         numerical_data_collums = handle_data.row('n')  # data of all numerical dataset 
+        boolean_data = handle_data.row('b')
+        categorical_data = handle_data.row('c')
         mark = 1   # simple marking 
         for collums in numerical_data_collums: 
             print(mark)
             self.central_tendency(collums[1:])  # due to header exception
             mark += 1
 
-discriptive_statistics = Discriptive_stat(data)  # loaded data into discriptive object 
-discriptive_statistics.present()

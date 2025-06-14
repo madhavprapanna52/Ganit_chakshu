@@ -8,7 +8,11 @@ import csv
 # MVP tool - Very basic 
 
 # Basic functions 
-def load_csv(file_name):
+def load_csv(file_name):  # working fine 
+    """
+    Loads csv into list : Deadly for big data 
+    TODO Making it efficient through using batch processing data flow 
+    """
     data = []
     f = open(file_name, 'r')
     r = csv.reader(f)
@@ -24,7 +28,7 @@ def index_iteration(index, big_list):
     return copy
 
 
-class Data_handle():
+class Data_handle():  # working fine 
     '''
     Handles basic data handleing frameworks for lists 
     making use of cordinate systems 
@@ -32,7 +36,7 @@ class Data_handle():
     def __init__(self,data_set):
         self.data_list = data_set # list 
     
-    def row(self, row_name):
+    def row(self, row_name):  # working fine 
         '''
         returns copy of the row required for operation through header name
         input : row_name
@@ -51,17 +55,9 @@ class Data_handle():
             i += 1
             if (i == len(header)):
                 not_done = False
+        return return_list
 
-
-        # match labels 
-        if (len(return_list) > 1):
-            print('Multi match')
-            return return_list
-        else:
-            return return_list
-
-
-class Loging_program_report():
+class Loging_program_report():  # working fine 
     def __init__(self):
         self.log_data_dict = {}
         self.label_list = []
@@ -77,6 +73,49 @@ class Loging_program_report():
     def out(self, label_text, text):
         print('_'*20)
         print(label_text)
-        for i in text:
-            print(i)
+        print(text)
+        # li = []
+        # for elems in text:
+        #     if type(li) == type(elems):
+        #         for e in elems:
+        #             print('+'*30)
+        #             print(e)
+        #             print('+'*30)
         print('_'*20)
+
+l = Loging_program_report()
+
+def partition_list(list_input):  # wprking fine -- Label edge partition
+    '''
+    Making percentage based division 
+    Edge cases : smaller datasets 
+    '''
+    #todo Variable partition needed urgent 
+    # (x/total)X100 = 2% | v -> variable for partition chunks
+    v = 10
+    partition_size = int((v * len(list_input)) / 100)
+    i = 0
+    partition_output = []
+    print(f'list : {list_input}')
+    partition_output.append(list_input[0]) # adding label separate | 2 deep down
+    print(f'header : {list_input[0]}')
+    del list_input[0] # removing header
+    
+    while i <= (len(list_input)-v):
+        chunk = list_input[:v]  # No iterations - > error of not geting out out 
+        del list_input[:v]
+        print(f'chunk : {chunk}')
+        partition_output.append(chunk)
+        i += v
+    return partition_output
+
+'''
+#Tested with the edition of label edged partition
+d = load_csv('synthetic_data.csv')
+handle = Data_handle(d)
+b_list = handle.row('b')
+for i in b_list:
+    part = partition_list(i)
+    for p in part:
+    break
+'''

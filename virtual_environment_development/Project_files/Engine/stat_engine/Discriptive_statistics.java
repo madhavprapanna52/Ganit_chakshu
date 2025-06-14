@@ -45,7 +45,7 @@ public class Dataset {
         return numbers;
     }
 }
-
+// Discriptive Statistics 
 class DiscriptiveStatistics {
     public static void main(String arg[]) {
         String filename = "synthetic_data.csv";
