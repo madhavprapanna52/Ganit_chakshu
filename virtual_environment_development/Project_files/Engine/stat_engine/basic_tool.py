@@ -4,6 +4,7 @@ Making basic tools for projects
     - Data handle tool
 """
 import csv
+import math
 
 # MVP tool - Very basic 
 
@@ -94,9 +95,9 @@ def partition_list(list_input, partition_length=10):  # wprking fine -- Label ed
     print(f'header : {list_input[0]}')
     del list_input[0] # removing header
     
-    while i <= (len(list_input)-v):
-        chunk = list_input[:v]  # No iterations - > error of not geting out out 
-        del list_input[:v]
+    while i <= (len(list_input)-(v+1)):
+        chunk = list_input[i:v+i]  # No iterations - > error of not geting out out 
+        # del list_input[:v]
         print(f'chunk : {chunk}')
         partition_output.append(chunk)
         i += v
@@ -137,9 +138,78 @@ def bin_frequency(bin_num, l):
     return counter
 
 
-#Tested with the edition of label edged partition
-d = load_csv('synthetic_data.csv')
-handle = Data_handle(d)
-b_list = handle.row('b')
 
-n_list = handle.row('n')
+# tools 
+def freq_list(l, success_probability_want=False):
+    '''
+    input : partitioned list
+    output : partitioned based dictionary list containning freq of elements in partitions based
+    '''
+    freq_list = []
+    def counter_element(element, l):  # counts freq
+        counter = 0
+        for i in l: # iterating list
+            if (element == i):
+                counter += 1
+        return counter
+    # Binary dataset 
+    if l[0] == 'b':
+        total_success_probability = 0
+        # index based computing for simplicity     
+        for chunk in l[1:]:  # taking partitions list 
+            chunk_freq_element = {} # freq dictionary
+            chunk_freq_element['0'] = counter_element('0', chunk)/10
+            chunk_freq_element['1'] = counter_element('1', chunk)/10  # success event
+
+            total_success_probability += chunk_freq_element['1']
+            freq_list.append(chunk_freq_element) # adding chunk freq
+
+        if success_probability_want:
+            p = (total_success_probability/10)
+            return [freq_list, p]
+        return freq_list
+    # Categorical dataset 
+    elif l[0] == 'c':
+        elements_to_search = '1,2,3,4,5'.split(',')
+        for chunk in l[1:]:
+            chunk_freq = {}
+            for elems in elements_to_search:
+                chunk_freq[elems] = counter_element(elems, chunk)/10
+            freq_list.append(chunk_freq)
+        return freq_list
+    else:
+        return None
+
+def facto(i):
+    return math.factorial(i)
+
+def factorial_simplification(expression):  # working with simple numbers 
+    '''
+    Simplifies factorial expression through approach of expansion and cancilation computations and normal computations
+    featuring : solving factorial expressiions 
+    '''
+    nums = expression.split('_')  # integer it 
+    print(nums)
+    n = int(nums[0])
+    x = int(nums[1])
+    simple_number = len(nums[0]) <= 3
+    print(f'simple_number ; {simple_number}')
+    if simple_number:
+        deno = (facto(x) * facto(n-x))
+        if deno == 0:
+            return 1  # under denominator equates zero
+        ans = facto(n) / deno
+        return ans
+    else:
+        print('Making efficient way to deal with them ')
+
+j = factorial_simplification('20_10')
+print(f'this is the out put : {j}')
+
+# Testing probability counter 
+dataset_load = load_csv('synthetic_data.csv')
+handle = Data_handle(dataset_load)
+
+binary_d = handle.row('b')
+partition = partition_list(binary_d[1])
+f = freq_list(partition, True)

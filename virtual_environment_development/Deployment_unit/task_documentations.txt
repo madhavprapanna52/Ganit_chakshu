@@ -11,6 +11,5 @@ Features list to work on
 MVP targets 
 
     Inferences unit to make 
-        - Making basic probability modeling - discreet and continous data sets 
-        - Modeling probability modeling functions into code 
+        - Modeling probability modeling functions into code || FOCUSED TASK - Under construction
         - fit algorithms 

@@ -63,3 +63,15 @@ Inferential statistics
 			- model fit algorithm
 			- Basic model sorting algorithms for finalising algorithm for processing 
 			- Visual aid for seeing the data itself 
+
+___________________________________________________
+
+Theory feed 
+        Binomial distribution 
+            > To find : probability of given number of success in given number of trials given the senario of dataset
+
+            Intuation : We use permutation and combination algorithm to know about possibilities and multiply 
+            then with known and possible probability of success and faliour
+
+            computations : success probability -> either predifined / average of total trials we have did
+            combinations ~ n!/x! * (n-x)!  - factorial computation thing required 

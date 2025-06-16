@@ -19,9 +19,9 @@ data_set = load_csv('synthetic_data.csv')
 #data_handle = Data_handle(data_set)
 
 # Probability Handler object 
-class Probability_kernel:
+class Probability_init:
     """
-    Making probability kernel thing which computes and initialises the 
+    Making probability kernel thing which initialises the 
     probability instances for the lists and dataset we are presenting 
     
     Initialising probability procedure  
@@ -52,44 +52,6 @@ class Probability_kernel:
         binary_dataset = self.data_list.row('b') 
         categorical_dataset = self.data_list.row('c')
         
-        # freq computation from the partitions 
-        def freq_list(l):
-            '''
-            input : partitioned list
-            output : partitioned based dictionary list containning freq of elements in partitions based
-            '''
-            freq_list = []
-            def counter_element(element, l):  # counts freq
-                counter = 0
-                for i in l: # iterating list
-                    if (element == i):
-                        counter += 1
-                return counter
-            # Binary dataset 
-            if l[0] == 'b':
-                # index based computing for simplicity 
-                
-                for chunk in l[1:]:  # taking partitions list 
-                    
-                    chunk_freq_element = {} # freq dictionary
-                    chunk_freq_element['0'] = counter_element('0', chunk)/10
-                    chunk_freq_element['1'] = counter_element('1', chunk)/10
-
-                    freq_list.append(chunk_freq_element) # adding chunk freq
-                return freq_list
-            # Categorical dataset 
-            elif l[0] == 'c':
-                elements_to_search = '1,2,3,4,5'.split(',')
-                for chunk in l[1:]:
-                    chunk_freq = {}
-                    for elems in elements_to_search:
-                        chunk_freq[elems] = counter_element(elems, chunk)/10
-
-                    freq_list.append(chunk_freq)
-                return freq_list
-            else:
-                return None
-        
         # All list would have their partitions based frequency 
         binary_data_freq = []
         categorical_freq = []
@@ -99,6 +61,7 @@ class Probability_kernel:
             partitioned_list  = partition_list(binary_elements)
             freq_dict_list = freq_list(partitioned_list)  # list of dictionaries 
             binary_data_freq.append(freq_dict_list)
+
         for categorical_unit in categorical_dataset:
             partitioned_cat = partition_list(categorical_unit)
             freq_dict_list = freq_list(partitioned_cat)
@@ -130,11 +93,11 @@ class Probability_kernel:
                 freq_dict[str(bins)] = bin_frequency(bins, int_l)/10  # probability initialised
             cont_probability_model.append(freq_dict)  # containning the frequencies dict
         return cont_probability_model
-        
 
-p = Probability_kernel(data_set)
+
+
+p = Probability_init(data_set)
 dis = p.Discreet_prob_ini('b')
 c = p.Continuous_probability_initialisation()
-
-print(c)
-
+print(dis)
+#TODO Need probability Modeling engines and fitting algorithm mvp
