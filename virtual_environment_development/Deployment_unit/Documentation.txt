@@ -75,3 +75,12 @@ Theory feed
 
             computations : success probability -> either predifined / average of total trials we have did
             combinations ~ n!/x! * (n-x)!  - factorial computation thing required 
+
+
+----------------------------------------------------------
+Modeling continuous_datataset 
+
+    > Making modeling of continuous data set using simple fiting 
+    algorithm for fiting modeling functions and finding parameters through fit force
+
+    > 

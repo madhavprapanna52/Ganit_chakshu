@@ -94,10 +94,4 @@ class Probability_init:
             cont_probability_model.append(freq_dict)  # containning the frequencies dict
         return cont_probability_model
 
-
-
-p = Probability_init(data_set)
-dis = p.Discreet_prob_ini('b')
-c = p.Continuous_probability_initialisation()
-print(dis)
 #TODO Need probability Modeling engines and fitting algorithm mvp

@@ -20,8 +20,12 @@ class Discreet_functions_modeling:
         self.data_set = data_set  # Only load binary dataset list
         self.cli_mode = True
         self.x = 0
+        self.p = 0
 
     # todo Binomial is made for binary for now - Upgrade expected
+
+    def geometric_distribution(self):
+        return (self.p * ((1-self.p)**(self.x - 1)))
 
     def binomial_distribution(self):
         """
@@ -29,8 +33,8 @@ class Discreet_functions_modeling:
         Dataset is taken into account for computing probability of given success count in given trials
         Analysing the given data - Based thus computations would be based on the given number of trials
         """
-        n = (len(self.data_set)-1)
-
+        n = 100
+        x = self.x
         if self.cli_mode:
             not_got_x = True
             while not_got_x:
@@ -41,22 +45,17 @@ class Discreet_functions_modeling:
                 not_got_x = False
 
             self.cli_mode = False
-            print(f'x : {x}')
             return self.binomial_distribution()
 
         Binomial_Expression = '(n_x)*(p^x)*(q^(n-x))'
         pa = partition_list(self.data_set)
-        print(f'pa : {pa}')
-        p = freq_list((pa),success_probability_want=True)[1]
-        print('probability ',p)
+        self.p = freq_list((pa),success_probability_want=True)[1]
+        p = self.p
         q = (1 - p)
-        x = self.x
         final = (factorial_simplification(f'{n}_{x}')) * (p**x) * (q ** (n - x))
-        print(f'PROBABILITY ESTIMATE OF GETING REQUIRED NUMBER OF SUCCESS : {final}')
         return final
 
 # testing unit
-print('Binary data set ',binary_d)
-print('_'*20)
 d = Discreet_functions_modeling(binary_d[0])
-d.binomial_distribution()
+print(d.binomial_distribution())
+print(d.geometric_distribution())
