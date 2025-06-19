@@ -90,15 +90,12 @@ def partition_list(list_input, partition_length=10):  # wprking fine -- Label ed
     partition_size = int((v * len(list_input)) / 100)
     i = 0
     partition_output = []
-    print(f'list : {list_input}')
     partition_output.append(list_input[0]) # adding label separate | 2 deep down
-    print(f'header : {list_input[0]}')
     del list_input[0] # removing header
     
     while i <= (len(list_input)-(v+1)):
         chunk = list_input[i:v+i]  # No iterations - > error of not geting out out 
         # del list_input[:v]
-        print(f'chunk : {chunk}')
         partition_output.append(chunk)
         i += v
     return partition_output
@@ -189,11 +186,9 @@ def factorial_simplification(expression):  # working with simple numbers
     featuring : solving factorial expressiions 
     '''
     nums = expression.split('_')  # integer it 
-    print(nums)
     n = int(nums[0])
     x = int(nums[1])
     simple_number = len(nums[0]) <= 3
-    print(f'simple_number ; {simple_number}')
     if simple_number:
         deno = (facto(x) * facto(n-x))
         if deno == 0:
@@ -204,7 +199,6 @@ def factorial_simplification(expression):  # working with simple numbers
         print('Making efficient way to deal with them ')
 
 j = factorial_simplification('20_10')
-print(f'this is the out put : {j}')
 
 # Testing probability counter 
 dataset_load = load_csv('synthetic_data.csv')

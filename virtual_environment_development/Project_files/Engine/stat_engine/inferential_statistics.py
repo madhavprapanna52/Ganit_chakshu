@@ -15,8 +15,9 @@ Procedure
 """
 from basic_tool import*
 
+
 data_set = load_csv('synthetic_data.csv')
-#data_handle = Data_handle(data_set)
+data_handle = Data_handle(data_set)
 
 # Probability Handler object 
 class Probability_init:
@@ -90,14 +91,8 @@ class Probability_init:
             # Dictionary list | bins frequency output 
             freq_dict = {}
             for bins in partition_bin_list:
-                freq_dict[str(bins)] = bin_frequency(bins, int_l)/10  # probability initialised
+                freq_dict[str(bins)] = bin_frequency(bins, int_l) * 10 # probability initialised *******************
             cont_probability_model.append(freq_dict)  # containning the frequencies dict
         return cont_probability_model
 
-
-
 p = Probability_init(data_set)
-dis = p.Discreet_prob_ini('b')
-c = p.Continuous_probability_initialisation()
-print(dis)
-#TODO Need probability Modeling engines and fitting algorithm mvp

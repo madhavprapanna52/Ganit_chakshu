@@ -22,14 +22,10 @@ def Random_data_generator(size=50, dimensions=5):
         collum_data_points = []
 
         data_type, label_set = shuffel(ranges) # geting data , Label attached 
-        print(label_set)
         collum_data_points.append(label_set)  # seting label as header 
-        print(collum_data_points)
         for data in range(size):
             d = random.randint(data_type[0],data_type[1])
             collum_data_points.append(d)
-        print('collum data points')
-        print(collum_data_points)
         data_points_list.append(collum_data_points)
     return data_points_list  # tested ok
 
@@ -50,12 +46,7 @@ def format_output(data_points):
         while j <= (len(data_points)-1):
             row_data.append(data_points[j][i])  # required element |
             j += 1
-        print(row_data)
         formated_data.append(row_data)  # applying row data 
-    print('_'*20)
-    print("formated dataset")
-    for i in formated_data:
-        print(i)
     return formated_data  # tested ok
 
 data_set = format_output(Random_data_generator(101,10))

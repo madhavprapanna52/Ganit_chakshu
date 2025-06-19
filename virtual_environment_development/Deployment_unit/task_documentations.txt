@@ -8,8 +8,12 @@ Features list to work on
 
     - Making copy based - DATA FLOW AND EXECUTION OPTIMISATION IS REQUIRED MUST TO PREVENT CRASHES 
 
-MVP targets 
+Project journel || Tasks log 
 
-    Inferences unit to make 
-        - Modeling probability modeling functions into code || FOCUSED TASK - Under construction
-        - fit algorithms 
+        Targets                                     Status 
+1. Basic data generator                              done 
+2. Making basic data flow tools                      done
+3. Probability initialisation                        done
+4. Discreet datset - functions modeling cli          done 
+5. Probability tools development                  FOCUSED
+6. Continuous dataset modeling unit               under-construction
